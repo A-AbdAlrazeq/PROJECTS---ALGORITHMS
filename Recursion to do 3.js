@@ -61,13 +61,12 @@ console.log(tarai(10, 2, 9));
 
 function generateSubsets(str, index = 0, currentSubset = "", subsets = []) {
   if (index === str.length) {
-    console.log("length " + str.length);
-    console.log("index " + index);
     console.log(currentSubset);
     subsets.push(currentSubset);
     console.log(subsets);
   } else {
     generateSubsets(str, index + 1, currentSubset, subsets); // Exclude the current character
+    console.log("currentSubset " + currentSubset + " str " + str.charAt(index));
     generateSubsets(str, index + 1, currentSubset + str.charAt(index), subsets); // Include the current character
   }
 
