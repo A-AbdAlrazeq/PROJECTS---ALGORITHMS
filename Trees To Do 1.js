@@ -9,26 +9,26 @@ class BST {
   constructor() {
     this.root = null;
   }
-  add(val) {
+  add(value) {
     var head = this.root;
     while (head) {
-      if (val > head.value) {
+      if (value > head.value) {
         if (head.right) {
           head = head.right;
         } else {
-          head.right = new BTNode(val);
+          head.right = new BTNode(value);
           return this;
         }
       } else {
         if (head.left) {
           head = head.left;
         } else {
-          head.left = new BTNode(val);
+          head.left = new BTNode(value);
           return this;
         }
       }
     }
-    this.root = new BTNode(val);
+    this.root = new BTNode(value);
     return this;
   }
   contains(value) {
