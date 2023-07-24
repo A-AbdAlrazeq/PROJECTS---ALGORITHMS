@@ -28,37 +28,26 @@ function rGCF1(num1, num2) {
 }
 console.log(rGCF1(2, 3));
 
-function rGCF(num1, num2) {
-  if (num1 === num2) {
-    return num1; // Base case: If num1 and num2 are equal, GCF is num1 (or num2).
+function GCF(param1, param2) {
+  if (param1 == param2) {
+    return param1;
   }
-
-  if (num1 === 0) {
-    return num2; // Base case: If num1 is 0, GCF is num2.
+  if (param1 > param2) {
+    if ((param1 / param2) % 1 === 0) {
+      return param2;
+    } else {
+      return GCF(param1 - param2, param2);
+    }
   }
-
-  if (num2 === 0) {
-    return num1; // Base case: If num2 is 0, GCF is num1.
-  }
-
-  if (num1 % 2 === 0 && num2 % 2 === 0) {
-    // If both num1 and num2 are even, divide both by 2 and multiply the result by 2.
-    return 2 * rGCF(num1 / 2, num2 / 2);
-  } else if (num1 % 2 === 0) {
-    // If num1 is even and num2 is odd, divide num1 by 2.
-    return rGCF(num1 / 2, num2);
-  } else if (num2 % 2 === 0) {
-    // If num2 is even and num1 is odd, divide num2 by 2.
-    return rGCF(num1, num2 / 2);
-  } else {
-    // If both num1 and num2 are odd, use binary GCD algorithm with abs(num1 - num2) / 2.
-    const diff = Math.abs(num1 - num2);
-    return rGCF(diff / 2, Math.min(num1, num2));
+  if (param1 < param2) {
+    if ((param1 / param2) % 1 === 0) {
+      return param2;
+    } else {
+      return GCF(param1, param2 - param1);
+    }
   }
 }
-
-// Test case
-console.log(rGCF(123456, 987654)); // Output: 6 (GCF of 123456 and 987654 is 6)
+console.log(GCF(123456, 987654));
 
 function tarai(x, y, z) {
   if (x <= y) {
