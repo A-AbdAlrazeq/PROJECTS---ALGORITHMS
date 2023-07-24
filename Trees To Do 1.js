@@ -47,25 +47,17 @@ class BST {
   }
   min() {
     var current = this.root;
-    var min = this.root.value;
     while (current.left) {
-      if (current.left.value < min) {
-        min = current.left.value;
-      }
       current = current.left;
     }
-    return min;
+    return current.value;
   }
   max() {
     var current = this.root;
-    var max = this.root.value;
     while (current.right) {
-      if (current.right.value > max) {
-        max = current.right.value;
-      }
       current = current.right;
     }
-    return max;
+    return current.value;
   }
   size(currentNode) {
     if (!currentNode) {
@@ -85,12 +77,14 @@ class BST {
 }
 
 tree = new BST();
+tree.add(-2);
 tree.add(0);
 tree.add(2);
 tree.add(4);
 tree.add(6);
 tree.add(8);
 tree.add(15);
+tree.add(18);
 console.log(tree.contains(6));
 console.log(tree.contains(7));
 console.log(tree.contains(8));
