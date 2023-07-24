@@ -10,25 +10,29 @@ arr = [1, 2, 3, 4, 5];
 console.log(reverse(arr));
 
 function rotate(arr, shiftBy) {
-  var t = Math.abs(shiftBy);
-  while (t > 0) {
+  var counter = 0;
+  while (Math.abs(shiftBy) > counter) {
     if (shiftBy > 0) {
       var temp = arr[arr.length - 1];
-      for (var i = arr.length - 1; i > 0; i--) arr[i] = arr[i - 1];
+      for (var i = arr.length - 1; i > 0; i--) {
+        arr[i] = arr[i - 1];
+      }
       arr[0] = temp;
+      counter++;
     } else {
       var temp = arr[0];
       for (var i = 0; i < arr.length - 1; i++) {
         arr[i] = arr[i + 1];
       }
-      arr[arr.length + 1] = temp;
+      counter++;
+      arr[arr.length - 1] = temp;
     }
-    t--;
   }
+
   return arr;
 }
 
-console.log(rotate([1, 2, 3], 1));
+console.log(rotate([1, 2, 3, 4], -2));
 
 function filterArr(arr, min, max) {
   var i = 0;
