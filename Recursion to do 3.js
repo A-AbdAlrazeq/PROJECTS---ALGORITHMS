@@ -58,3 +58,22 @@ function tarai(x, y, z) {
 }
 
 console.log(tarai(10, 2, 9));
+
+function generateSubsets(str, index = 0, currentSubset = "", subsets = []) {
+  if (index === str.length) {
+    console.log("length " + str.length);
+    console.log("index " + index);
+    console.log(currentSubset);
+    subsets.push(currentSubset);
+    console.log(subsets);
+  } else {
+    generateSubsets(str, index + 1, currentSubset, subsets); // Exclude the current character
+    generateSubsets(str, index + 1, currentSubset + str.charAt(index), subsets); // Include the current character
+  }
+
+  return subsets;
+}
+
+// Test the function with "abc"
+const result = generateSubsets("abc");
+console.log(result);
