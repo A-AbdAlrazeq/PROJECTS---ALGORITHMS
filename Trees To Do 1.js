@@ -31,22 +31,19 @@ class BST {
     this.root = new BTNode(val);
     return this;
   }
-  contains(val) {
-    return this.search(this.root, val);
-  }
-
-  search(node, val) {
-    if (!node) {
-      return false;
+  contains(value) {
+    var current = this.root;
+    while (current) {
+      if (value == current.value) {
+        return true;
+      }
+      if (value < current.value) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
     }
-
-    if (val === node.value) {
-      return true;
-    } else if (val < node.value) {
-      return this.search(node.left, val);
-    } else {
-      return this.search(node.right, val);
-    }
+    return false;
   }
   min() {
     var current = this.root;
@@ -97,6 +94,7 @@ tree.add(15);
 console.log(tree.contains(6));
 console.log(tree.contains(7));
 console.log(tree.contains(8));
+console.log(tree.contains(15));
 console.log(tree.min());
 console.log(tree.max());
 console.log(tree.size(tree.root));
