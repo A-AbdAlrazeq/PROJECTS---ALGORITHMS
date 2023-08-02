@@ -63,9 +63,7 @@ class BST {
     if (!currentNode) {
       return 0;
     }
-    var leftSide = this.size(currentNode.left);
-    var rightSide = this.size(currentNode.right);
-    return 1 + leftSide + rightSide;
+    return 1 + this.size(currentNode.left) + this.size(currentNode.right);
   }
 
   isEmpty() {
